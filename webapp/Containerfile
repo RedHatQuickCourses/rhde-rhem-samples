@@ -1,0 +1,13 @@
+FROM registry.redhat.io/rhel9/rhel-bootc:9.6
+RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
+    dnf -y install flightctl-agent firewalld httpd && \
+    dnf clean all && \
+    systemctl enable flightctl-agent && \
+    systemctl mask bootc-fetch-apply-updates.timer && \
+    systemctl enable firewalld && \
+    systemctl enable httpd && \
+    firewall-offline-cmd --zone=public --add-service=http
+ADD html /webapp/html
+RUN chmod -R a+rX /webapp && \
+  semanage fcontext -a -t httpd_sys_content_t "/webapp(/.*)?" && \
+  sed -i '1,$ s?/var/www/?/webapp/?' /etc/httpd/conf/httpd.conf
