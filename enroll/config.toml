@@ -19,10 +19,10 @@ network --bootproto=dhcp
 
 # local user for console login and SSH
 useradd -g wheel core
-echo "core:redhat123" | chpasswd
+echo "core:REPLACE_WITH_PASSWD" | chpasswd
 mkdir /home/core/.ssh
 cat > /home/core/.ssh/authorized_keys << EOFSSH
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9aF4KAfkoh2+Wav7nmEl9xtIMHW8bhW2pHl7NcwgF+ initial key for edge devices
+REPLACE_WITH_SSH_KEY
 EOFSSH
 cat > /etc/flightctl/config.yaml << EOFRHEM
 REPLACE_WITH_CONFIG_YAML
