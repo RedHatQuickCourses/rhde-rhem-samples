@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ ! "${1}" =~ ^[0-9]$ ]]; then
-    echo 'Please provide a single-digit number [0-9] to identify your test VM' 1>&2
+if [[ ! "${1}" =~ ^[1-9]$ ]]; then
+    echo 'Please provide a single-digit number [1-9] to identify your test VM' 1>&2
     exit 1
 fi
 
