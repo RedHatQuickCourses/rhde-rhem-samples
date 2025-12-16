@@ -24,6 +24,7 @@ mkdir /home/core/.ssh
 cat > /home/core/.ssh/authorized_keys << EOFSSH
 REPLACE_WITH_SSH_KEY
 EOFSSH
+# Comment the following command to use early binding
 cat > /etc/flightctl/config.yaml << EOFRHEM
 REPLACE_WITH_CONFIG_YAML
 EOFRHEM
