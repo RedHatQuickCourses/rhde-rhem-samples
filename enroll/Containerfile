@@ -5,4 +5,4 @@ RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.rep
     systemctl enable flightctl-agent && \
     systemctl mask bootc-fetch-apply-updates.timer
 # Uncomment the following line if you prefer early binding
-ADD config.yaml /etc/flightctl
+# ADD config.yaml /etc/flightctl
