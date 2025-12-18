@@ -1,0 +1,20 @@
+apiVersion: flightctl.io/v1beta1
+kind: Device
+metadata:
+  labels:
+    alias: edge-1
+    rhel: "9.6"
+    type: noapp
+  name: REPLACE_WITH_UUID
+spec:
+  config:
+  - inline:
+    - content: |
+        REPLACE_WITH_SSH_KEY
+      mode: 420
+      path: /home/core/.ssh/authorized_keys
+    name: ssh-key
+  - inline:
+    - content: Under new management!
+      path: /etc/motd
+    name: motd
