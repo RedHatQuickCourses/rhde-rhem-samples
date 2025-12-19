@@ -7,6 +7,8 @@ RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.rep
     systemctl enable firewalld && \
     systemctl enable httpd && \
     firewall-offline-cmd --zone=public --add-service=http
+ADD domain.crt /etc/pki/ca-trust/source/anchors/
+RUN update-ca-trust
 ADD html /webapp/html
 RUN chmod -R a+rX /webapp && \
   semanage fcontext -a -t httpd_sys_content_t "/webapp(/.*)?" && \
