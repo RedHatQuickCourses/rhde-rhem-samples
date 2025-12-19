@@ -4,5 +4,7 @@ RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.rep
     dnf clean all && \
     systemctl enable flightctl-agent && \
     systemctl mask bootc-fetch-apply-updates.timer
+ADD domain.crt /etc/pki/ca-trust/source/anchors/
+RUN update-ca-trust
 # Uncomment the following line to use early binding
 # ADD config.yaml /etc/flightctl
