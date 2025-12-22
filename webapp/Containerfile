@@ -13,3 +13,4 @@ ADD html /webapp/html
 RUN chmod -R a+rX /webapp && \
   semanage fcontext -a -t httpd_sys_content_t "/webapp(/.*)?" && \
   sed -i '1,$ s?/var/www/?/webapp/?' /etc/httpd/conf/httpd.conf
+ADD tmpfiles.d /usr/lib/tmpfiles.d
