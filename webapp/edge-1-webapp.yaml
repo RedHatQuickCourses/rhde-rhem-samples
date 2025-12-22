@@ -18,3 +18,10 @@ spec:
     - content: Under new management!
       path: /etc/motd
     name: motd
+  - inline:
+    - content: |
+        REPLACE_WITH_AUTH_JSON
+      path: /etc/ostree/auth.json
+    name: registry-auth
+  os:
+    image: registry.lab.example.com:5000/rhem-webapp:v1.0
