@@ -1,0 +1,19 @@
+apiVersion: flightctl.io/v1beta1
+kind: Fleet
+metadata:
+  name: kiosk
+spec:
+  selector:
+    matchLabels:
+      location: store
+  template:
+    spec:
+      applications: []
+      config:
+      - inline:
+        - content: |-
+            kiosk terminal {{ .metadata.labels.alias }}
+
+          path: /etc/motd
+        name: motd
+

@@ -9,6 +9,8 @@ metadata:
 spec:
   config:
   - inline:
-    - content: Under new management!
+    - content: |-
+        Under new management!
+
       path: /etc/motd
     name: motd
