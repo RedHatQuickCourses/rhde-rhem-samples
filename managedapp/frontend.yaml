@@ -33,10 +33,9 @@ spec:
         name: httpd
         ports:
         - 80:8080
+        volumes:
         - image:
-            pullPolicy: IfNotPresent
             reference: registry.lab.example.com:5000/webappvol:v1.0
           mount:
             path: /var/www
           name: html
-        volumes: []
