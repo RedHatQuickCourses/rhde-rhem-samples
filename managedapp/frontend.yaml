@@ -1,0 +1,36 @@
+apiVersion: flightctl.io/v1beta1
+kind: Fleet
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      role: frontend
+  template:
+    spec:
+      os:
+        image: registry.lab.example.com:5000/containerhost:v1.0
+      config:
+      - inline:
+        - content: |
+            REPLACE_WITH_OSTREE_AUTH_JSON
+          path: /etc/ostree/auth.json
+        name: bootc-registry-auth
+      - inline:
+        - content: |
+            REPLACE_WITH_ROOT_AUTH_JSON
+          path: /root/.config/containers/auth.json
+        name: app-registry-auth
+      - gitRef:
+          path: /managedapp/config
+          repository: webapp
+          targetRevision: main
+        name: webapp
+      applications:
+      - appType: container
+        envVars: {}
+        image: registry.redhat.io/ubi9/httpd-24:latest
+        name: httpd
+        ports:
+        - 80:8080
+        volumes: []
