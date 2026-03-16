@@ -1,8 +1,8 @@
 FROM registry.redhat.io/rhel9/rhel-bootc:9.6
-### To use the upstream packages
-# RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
+# To use the upstream packages:
+#RUN dnf -y config-manager --add-repo https://rpm.flightctl.io/flightctl-epel.repo && \
 #    dnf -y install flightctl-agent-1.0.2 && \
-### To use local copies of the packages
+# To use local copies of the packages:
 ADD rpms /tmp
 RUN ls /tmp/*rpm
 RUN dnf -y install /tmp/flightctl*.rpm && \
@@ -13,5 +13,3 @@ RUN dnf -y install /tmp/flightctl*.rpm && \
     systemctl mask bootc-fetch-apply-updates.timer
 ADD domain.crt /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
-# Uncomment the following line to use early binding
-# ADD config.yaml /etc/flightctl
