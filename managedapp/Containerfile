@@ -4,7 +4,6 @@ FROM registry.redhat.io/rhel9/rhel-bootc:9.6
 #    dnf -y install flightctl-agent-1.0.2 && \
 # To use local copies of the packages:
 ADD rpms /tmp
-RUN ls /tmp/*rpm
 RUN dnf -y install /tmp/flightctl*.rpm && \
     dnf -y install container-tools qemu-guest-agent && \
     dnf clean all && \
