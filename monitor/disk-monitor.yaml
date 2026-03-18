@@ -19,13 +19,13 @@ spec:
       resources:
       - monitorType: Disk
         samplingInterval: 5s
-        path: /
+        path: /sysroot
         alertRules:
         - severity: Warning
           duration: 1m          
           percentage: 50
           description: Disk is over 50% full for over 1min.
         - severity: Critical
-          duration: 5m
+          duration: 3m
           percentage: 80
-          description: Disk is over 80% full over 5min.
+          description: Disk is over 80% full over 3min.
