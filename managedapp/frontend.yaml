@@ -29,13 +29,7 @@ spec:
       applications:
       - appType: container
         envVars: {}
-        image: registry.lab.example.com:5000/ubi9/httpd-24:latest
+        image: registry.lab.example.com:5000/webapp:v1.0
         name: httpd
         ports:
         - 80:8080
-        volumes:
-        - image:
-            reference: registry.lab.example.com:5000/webappvol:v1.0
-          mount:
-            path: /var/www
-          name: html

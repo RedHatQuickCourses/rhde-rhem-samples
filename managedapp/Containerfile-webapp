@@ -1,0 +1,21 @@
+FROM registry.redhat.io/ubi9/ubi
+
+RUN yum -y install httpd php php-fpm \
+  && yum clean all
+
+ADD index.php /var/www/html
+
+RUN sed -i 's/Listen 80/Listen 8080/' /etc/httpd/conf/httpd.conf \
+  && chgrp -R 0 /var/log/httpd /var/run/httpd \
+  && chmod -R g=u /var/log/httpd /var/run/httpd
+  
+RUN mkdir -p /run/php-fpm \
+  && mkfifo /run/php-fpm/www.sock \
+  && chgrp -R 0 /run/php-fpm \
+  && chmod -R g=u /run/php-fpm
+
+EXPOSE 8080
+
+USER 1001
+
+CMD php-fpm -D && httpd -D FOREGROUND
