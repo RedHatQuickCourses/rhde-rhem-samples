@@ -1,7 +1,7 @@
 apiVersion: flightctl.io/v1beta1
 kind: Repository
 metadata:
-  name: webapp-repo
+  name: webapp
 spec:
   type: git
   url: https://github.com/RedHatQuickCourses/rhde-rhem-samples.git
